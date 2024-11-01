@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>High-Quality Roofing Solutions for Your Home</h1>
+                <p>Protecting your investment with expert craftsmanship and durable materials.</p>
+                <a href="{% url 'homepage' %}#contact" class="btn btn-primary btn-lg">Get a Free Quote</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/Roofing.webp' %}" alt="Roofing Services" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hero">
+</section>
+
+<section id="services" class="py-5">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Our Roofing Services</h2>
+            <p class="lead">We offer a comprehensive range of roofing solutions to meet your needs.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{% static 'images/service1.jpg' %}" class="card-img-top" alt="Service 1">
+                <div class="card-body">
+                    <h5 class="card-title">Service 1</h5>
+                    <p class="card-text">A brief description of service 1 goes here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{% static 'images/service2.jpg' %}" class="card-img-top" alt="Service 2">
+                <div class="card-body">
+                    <h5 class="card-title">Service 2</h5>
+                    <p class="card-text">A brief description of service 2 goes here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{% static 'images/service3.jpg' %}" class="card-img-top" alt="Service 3">
+                <div class="card-body">
+                    <h5 class="card-title">Service 3</h5>
+                    <p class="card-text">A brief description of service 3 goes here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="contact">
+</section>
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <h2>Contact Us</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

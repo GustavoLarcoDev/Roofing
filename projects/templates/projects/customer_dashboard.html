@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome, {{ customer.user.username }}!</h1>
+
+<h2>Your Projects</h2>
+<ul>
+    {% for project in projects %}
+        <li>
+            {{ project.address }} - {{ project.status }}
+            {% if project.assigned_team %}
+                (Assigned Team: {{ project.assigned_team }})
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Upcoming Schedules</h2>
+<ul>
+    {% for schedule in schedules %}
+        <li>
+            {{ schedule.project.address }} - {{ schedule.date }}
+            ({{ schedule.start_time }} - {{ schedule.end_time }})
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
