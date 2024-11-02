@@ -14,5 +14,7 @@ urlpatterns = [
          name='admin_project_edit'),
     path('admin/projects/create/', views.admin_project_create,
          name='admin_project_create'),
+    path('register/', views.register, name='register'),
+
 
 ]

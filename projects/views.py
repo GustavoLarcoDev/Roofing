@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
-from .forms import ContactForm
+from .forms import ContactForm, CustomerRegistrationForm
 from .models import Project, Schedule, WorkTeam, Customer
 from django.contrib.auth.decorators import login_required, user_passes_test
 from datetime import datetime
@@ -109,3 +109,14 @@ def admin_project_edit(request, project_id):
     teams = WorkTeam.objects.all()
     context = {'project': project, 'teams': teams}
     return render(request, 'projects/admin_project_edit.html', context)
+
+
+def register(request):
+    if request.method == 'POST':
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CustomerRegistrationForm()
+    return render(request, 'projects/register.html', {'form': form})

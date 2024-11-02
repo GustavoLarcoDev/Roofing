@@ -30,6 +30,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'homepage' %}">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'Register' %}">Registration</a>
+            </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'customer_dashboard' %}">Dashboard</a>
