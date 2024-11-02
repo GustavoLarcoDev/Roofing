@@ -20,13 +20,13 @@ class ProjectForm(forms.ModelForm):
 class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
-        fields = ['project', 'date', 'time', 'description']
+        fields = ['project', 'date', 'start_time', 'end_time']
 
 
 class WorkTeamForm(forms.ModelForm):
     class Meta:
         model = WorkTeam
-        fields = ['name', 'members']
+        fields = ['name']
 
 
 class CustomerRegistrationForm(UserCreationForm):
