@@ -62,19 +62,6 @@
 
 <section id="contact">
 </section>
-<section id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <h2>Contact Us</h2>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 {% endblock %}

@@ -4,25 +4,34 @@
 <h1>Welcome, {{ customer.user.username }}!</h1>
 
 <h2>Your Projects</h2>
-<ul>
+<div class="row">
     {% for project in projects %}
-        <li>
-            {{ project.address }} - {{ project.status }}
-            {% if project.assigned_team %}
-                (Assigned Team: {{ project.assigned_team }})
-            {% endif %}
-        </li>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'project_detail' project.id %}">{{ project.address }}</a>
+                </h5>
+                <p class="card-text">Status: {{ project.status }}</p>
+                {% if project.assigned_team %}
+                <p class="card-text">Assigned Team: {{ project.assigned_team }}</p>
+                {% endif %}
+                <h6>Schedules:</h6>
+                <ul>
+                    {% for schedule in project.schedule_set.all %}
+                    <li>{{ schedule.date }} ({{ schedule.start_time }} - {{ schedule.end_time }})</li>
+                    {% endfor %}
+                </ul>
+                <h6>Payments:</h6>
+                <ul>
+                    {% for payment in project.payment_set.all %}
+                    <li>${{ payment.amount }} - {{ payment.payment_date }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
-
-<h2>Upcoming Schedules</h2>
-<ul>
-    {% for schedule in schedules %}
-        <li>
-            {{ schedule.project.address }} - {{ schedule.date }}
-            ({{ schedule.start_time }} - {{ schedule.end_time }})
-        </li>
-    {% endfor %}
-</ul>
+</div>
 
 {% endblock %}

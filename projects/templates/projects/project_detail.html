@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Project Details</h1>
+    <h2>{{ project.address }}</h2>
+    <p>Status: {{ project.status }}</p>
+    {% if project.assigned_team %}
+    <p>Assigned Team: {{ project.assigned_team }}</p>
+    {% endif %}
+
+    <h3>Schedules:</h3>
+    <ul>
+        {% for schedule in project.schedule_set.all %}
+        <li>{{ schedule.date }} ({{ schedule.start_time }} - {{ schedule.end_time }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Payments:</h3>
+    <ul>
+        {% for payment in project.payment_set.all %}
+        <li>${{ payment.amount }} - {{ payment.payment_date }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

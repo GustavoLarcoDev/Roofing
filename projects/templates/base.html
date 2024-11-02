@@ -22,6 +22,7 @@
 
         </style>
     </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'homepage' %}">Roofing Company</a>
@@ -45,14 +46,6 @@
 
     {% block content %}
     {% endblock %}
+    {% include 'projects/footer.html' %}
 </body>
-<div class="container">
-    <div class="row">
-        <div class="col-12 d-none d-md-block">
-            <h2>About Us</h2>
-            <p>A long and detailed description of your company...</p>
-        </div>
-    </div>
-</div>
-
 </html>
